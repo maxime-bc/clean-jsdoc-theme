@@ -1,3 +1,3 @@
 module.exports = {
-  extends: ["@jsdoc", "prettier"]
+  extends: ["@jsdoc", "plugin:cypress/recommended", "prettier"]
 };

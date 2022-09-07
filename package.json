@@ -4,10 +4,13 @@
   "description": "A beautifully crafted theme/template for JSDoc 3. This theme/template looks and feels like a premium theme/template. This is a fully mobile responsive theme and also fully customizable theme.",
   "main": "publish.js",
   "scripts": {
-    "build": "node minify.js && node node_modules/jsdoc/jsdoc.js -c jsdoc-config.json",
+    "build": "rm -rf output && node minify.js && node node_modules/jsdoc/jsdoc.js -c jsdoc-config.json",
+    "serve": "npm run build && npx http-server ./output/v4/",
     "lint:js": "eslint . --ext .js --fix",
     "lint:style": "stylelint-config-prettier-check && stylelint static/styles/",
-    "lint": "npm run lint:js && npm run lint:style"
+    "lint": "npm run lint:js && npm run lint:style",
+    "test:open-cypress": "./cypress/e2e/run-e2e.sh headed",
+    "test:e2e": "./cypress/e2e/run-e2e.sh headless"
   },
   "repository": {
     "type": "git",
@@ -33,8 +36,11 @@
     "@jsdoc/eslint-config": "^1.1.6",
     "concurrently": "^7.2.2",
     "csso": "^5.0.3",
+    "cypress": "^10.6.0",
     "eslint": "^8.19.0",
     "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-cypress": "^2.12.1",
+    "http-server": "^14.1.1",
     "prettier": "^2.2.1",
     "stylelint": "^14.9.1",
     "stylelint-config-prettier": "^9.0.3",
